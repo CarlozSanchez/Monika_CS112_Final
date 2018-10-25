@@ -8,6 +8,5 @@ public interface MultiItemInterface
 
     double getSubtotal();
 
-    boolean equals();
-    String toString();
+
 }
