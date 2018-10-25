@@ -1,4 +1,4 @@
-public interface MultiItem
+public interface MultiItemInterface
 {
     void setItem(Item item);
     void setCount(int count);

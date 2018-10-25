@@ -1,7 +1,7 @@
 public interface MultiItemCollectionInterface
 {
     MultiItem getMultiItemArray();
-    int getIndexUsed();
+    int getCount();
 
     boolean addMultiItem(MultiItem multiItem);
     boolean addMultiItem(MultiItem[] multiItem);
