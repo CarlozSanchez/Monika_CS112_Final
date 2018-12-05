@@ -1,4 +1,4 @@
-4
+
 public class LotteryTestDriver
 {
 	public static void main(String[] args)
