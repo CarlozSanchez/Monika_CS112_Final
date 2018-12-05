@@ -8,6 +8,8 @@ public class LotteryTestDriver
 		
 		// Adding changes to test Github
 		
-		// Hello Drakina
+		LottoPick3 b = new LottoPick3();
+		LottoPick3 c = new LottoPick3();
+		System.out.println(b.equals(c));
 	}
 }

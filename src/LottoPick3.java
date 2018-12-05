@@ -16,7 +16,20 @@ public class LottoPick3 extends LotteryPick
 	{
 		return this.COST;
 	}
-	
+
+	public void addNumberToArray(int num)
+	{
+		if (getSizeOfArray() == 3)
+		{
+			System.out.println("Cannot add another number here");
+		}
+		else
+		{
+			//uses the method in LotteryPick addNumber to add to array.
+			addNumber(num);
+		}
+	}
+
 	public boolean equals(Object other)
 	{
 		if (other == null)
@@ -30,10 +43,7 @@ public class LottoPick3 extends LotteryPick
 		else
 		{
 			LottoPick3 otherLotto = (LottoPick3) other;
-	// ---->		///return super.equals(otherLotto.super());
-			return false;
+			return super.equals(otherLotto);			
 		}
-		
-		
 	}
 }

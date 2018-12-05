@@ -4,7 +4,7 @@ interface LottoInterface
 {
 	public Date getDate();
 	public String getTicketNumber();
-	public int getRetailAccountAccountNumber();
+	public int getRetailAccountNumber();
 	
 	public void setTicketNumber(String number);
 	public void setRetailerNumber(int retailer);
