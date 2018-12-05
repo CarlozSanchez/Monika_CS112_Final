@@ -1,4 +1,4 @@
-
+4
 public class LotteryTestDriver
 {
 	public static void main(String[] args)
@@ -7,5 +7,7 @@ public class LotteryTestDriver
 		System.out.println(a);
 		
 		// Adding changes to test Github
+		
+		// Hello Drakina
 	}
 }
