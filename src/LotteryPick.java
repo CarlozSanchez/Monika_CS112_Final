@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class LotteryPick
+public class LotteryPick implements Comparable, LottoInterface
 {
 	private String ticketNumber;
 	private int retailerAccountNumber;
@@ -34,14 +34,14 @@ public class LotteryPick
 	}
 	
 	//----------------setters ------- mutators
-	public void setTicketNumber(String ticketNum)
+	public void setTicketNumber(String number)
 	{
-		this.ticketNumber = ticketNum;
+		this.ticketNumber = number;
 	}
 	
-	public void setRetailerNumber(int retailerN)
+	public void setRetailerNumber(int retailer)
 	{
-		this.retailerAccountNumber = retailerN;
+		this.retailerAccountNumber = retailer;
 	}
 	
 	public void setNameOfGame(String name)
@@ -55,7 +55,7 @@ public class LotteryPick
 		return this.ticketNumber;
 	}
 	
-	public int getRetailerAccountNumber()
+	public int getRetailAccountAccountNumber()
 	{
 		return this.retailerAccountNumber;
 	}
@@ -108,7 +108,7 @@ public class LotteryPick
 		{
 			LotteryPick otherLottery = (LotteryPick) other;
 			return this.ticketNumber.equals(otherLottery.getTicketNumber())
-					&& this.retailerAccountNumber == otherLottery.getRetailerAccountNumber()
+					&& this.retailerAccountNumber == otherLottery.getRetailAccountAccountNumber()
 					&& this.numbers.equals(otherLottery.numbers)
 					&& this.nameOfGame.equals(otherLottery.getNameOfGame());
 		}
@@ -119,10 +119,18 @@ public class LotteryPick
 		String temp = "";
 		temp += getDate() + "\n";
 		temp += String.format("%-20s%-20s\n", "Game Name:", getNameOfGame());
-		temp += String.format("%-20s%-20d\n", "Retailer #:", getRetailerAccountNumber());
+		temp += String.format("%-20s%-20d\n", "Retailer #:", getRetailAccountAccountNumber());
 		temp += String.format("%-20s%-20s\n", "Ticket Number:", getTicketNumber());
 		temp += String.format("%s\n", numbers);
 		temp += String.format("%-20s$%-20.2f\n", "Cost:", getCost());
 		return temp;
+	}
+
+	@Override
+	//comparable interface
+	public int compareTo(Object arg0)
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
