@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-abstract public class LotteryPick implements Comparable
+abstract public class LotteryPick implements Serializable
 {
 	protected ArrayList<Integer> numbers;	//changed from private to protected
 
@@ -79,14 +80,5 @@ abstract public class LotteryPick implements Comparable
 		temp += String.format("%s\n", numbers);
 		//temp += String.format("%-20s$%-20.2f\n", "Cost:", getCost());
 		return temp;
-	}
-	
-	
-	@Override
-	//comparable interface
-	public int compareTo(Object arg0)
-	{
-		// TODO Auto-generated method stub
-		return 0;
 	}
 }

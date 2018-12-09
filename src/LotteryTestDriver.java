@@ -6,10 +6,12 @@ public class LotteryTestDriver
 {
 	public static void main(String[] args)
 	{
-
+		//test1();
+		//test2();
+		test3();
 	}
 	
-	private void test1()
+	private static void test1()
 	{
 		//LotteryPick a = new LotteryPick();
 		//System.out.println(a);
@@ -45,5 +47,48 @@ public class LotteryTestDriver
 		col01.addToCollection(b);
 		col01.addToCollection(c);
 		System.out.println(col01);	
+	}
+	
+	private static void test2()
+	{
+		DataBase database = new DataBase();
+		
+		System.out.println("The DataBase: " + database);
+		
+		//LotteryCollection lt = new LottoTicket();
+		LotteryCollection lc = new LotteryCollection();
+		
+		LottoTicket lottoTicket = database.add(lc);
+		
+		System.out.println(database);
+	}
+	
+	private static void test3()
+	{
+		DataBase database = new DataBase();
+		
+		LottoPick3 a3 = new LottoPick3();
+		LottoPick3 b3 = new LottoPick3();
+		
+		try
+		{
+			a3.addSetOfNumbers(LottoRandom.randomNumbers(3));
+			b3.addSetOfNumbers(LottoRandom.randomNumbers(3));
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("Unable to add numbers");;
+		}
+		
+		LotteryCollection lc = new LotteryCollection();
+		lc.addToCollection(a3);
+		lc.addToCollection(b3);
+		
+		LottoTicket lt = database.add(lc);
+
+		
+		System.out.println(database);;
+
 	}
 }

@@ -158,7 +158,19 @@ public class DataBase
 
 	public String toString()
 	{
-		return database.toString();
+		//return database.toString();
+		String temp = "";
+		for(LottoTicket lt : database)
+		{
+			temp += String.format("ID: %-3d Date: %s\n", lt.getID(), lt.getDate());
+			for(LotteryPick lp : lt.getCollection())
+			{
+				temp += "\t" + lp.getNumbers() + "\n";
+			}
+			temp += "\n";
+		}
+		
+		return temp;
 	}
 
 }

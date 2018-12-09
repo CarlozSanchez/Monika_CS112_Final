@@ -1,9 +1,10 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 // each game type will be seperated into different tickets
 // 
-public class LotteryCollection
+public class LotteryCollection implements Serializable
 {
 	private ArrayList <LotteryPick> collectionOfPick;
 	//private ArrayList <T> collectionOfPick;
