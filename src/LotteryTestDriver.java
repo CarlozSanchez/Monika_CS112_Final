@@ -6,11 +6,14 @@ public class LotteryTestDriver
 {
 	public static void main(String[] args)
 	{
+
+	}
+	
+	private void test1()
+	{
 		//LotteryPick a = new LotteryPick();
 		//System.out.println(a);
-		
-		
-		
+			
 		LottoPick3 b = new LottoPick3();
 		LottoPick3 c = new LottoPick3();
 		System.out.println(b.equals(c));
@@ -41,8 +44,6 @@ public class LotteryTestDriver
 		LotteryCollection col01 = new LotteryCollection();
 		col01.addToCollection(b);
 		col01.addToCollection(c);
-		System.out.println(col01);
-		
-		
+		System.out.println(col01);	
 	}
 }

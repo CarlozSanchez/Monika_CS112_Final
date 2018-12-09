@@ -28,7 +28,7 @@ public class LottoTicket extends LotteryCollection
 	}
 	
 	//mutators - setters
-	public void setUniqueID(int num)
+	public void setID(int num)
 	{
 		this.uniqueID = num;
 	}
@@ -39,7 +39,7 @@ public class LottoTicket extends LotteryCollection
 	}
 	
 	//accessors
-	public int getUniqueID()
+	public int getID()
 	{
 		return uniqueID;
 	}
@@ -63,14 +63,14 @@ public class LottoTicket extends LotteryCollection
 		else
 		{
 			LottoTicket otherObject = (LottoTicket) other;
-			return (uniqueID == otherObject.getUniqueID());
+			return (uniqueID == otherObject.getID());
 		}
 	}
 	
 	public String toString()
 	{
 		String temp = "";
-		temp += String.format("%-20s%d", "ID:", getUniqueID());
+		temp += String.format("%-20s%d", "ID:", getID());
 		temp += date;
 		return temp;
 	}
