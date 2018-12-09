@@ -1,23 +1,18 @@
 import java.util.ArrayList;
-
-//numbers 0-9 can be duplicated
-//in array list... it can be 000-999
-//each in array list is single digit... so 1, 1, 1 is allowed
-public class LottoPick3 extends LotteryPick
+//singular pick number
+// 1-99
+public class LottoPick1 extends LotteryPick
 {
-	private final int  MAX_NUMBER = 3;
+	private final int  MAX_NUMBER = 1;
 	private final double COST = 1.0;
-	private final String NAME_OF_GAME = "LottoPick3";
+	private final String NAME_OF_GAME = "LottoPick1";
 	
-	public LottoPick3()
+	public LottoPick1()
 	{
 		super();
 		getNameOfGame();
 		getCost();
 	}
-	
-	
-	//dont need full constructor
 	
 	//accessors
 	public double getCost()
@@ -28,11 +23,6 @@ public class LottoPick3 extends LotteryPick
 	public String getNameOfGame()
 	{
 		return this.NAME_OF_GAME;
-	}
-	
-	public ArrayList<Integer> getArrayList()
-	{
-		return numbers;
 	}
 	
 	//methods
