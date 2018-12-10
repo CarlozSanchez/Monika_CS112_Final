@@ -1,10 +1,13 @@
 
 import java.util.Date;
 
+
+
 public class LottoTicket extends LotteryCollection
 {
 	private int uniqueID;
 	private Date date;
+	private String nameOfGame;
 	
 	public LottoTicket()
 	{
@@ -36,6 +39,11 @@ public class LottoTicket extends LotteryCollection
 	public void setDate(Date date)
 	{
 		this.date = date;
+	} 
+	
+	public void setNameOfGame(String name)
+	{
+		this.nameOfGame = name;
 	}
 	
 	//accessors
@@ -47,6 +55,11 @@ public class LottoTicket extends LotteryCollection
 	public Date getDate()
 	{
 		return date;
+	}
+	
+	public String getNameOfGame()
+	{
+		return this.nameOfGame;
 	}
 	
 	//comparing unique ID
@@ -69,9 +82,11 @@ public class LottoTicket extends LotteryCollection
 	
 	public String toString()
 	{
+
 		String temp = "";
-		temp += String.format("%-20s%d", "ID:", getID());
-		temp += date;
+		temp += String.format("%-5s%-5d%-20s", "ID:", getID(), getNameOfGame());
+		temp += date + "\n";
+		temp += super.toString();
 		return temp;
 	}
 	

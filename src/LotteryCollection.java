@@ -10,7 +10,7 @@ public class LotteryCollection implements Serializable
 	//private ArrayList <T> collectionOfPick;
 	private double totalCost;
 	
-	//default constructor
+	// Default constructor
 	public LotteryCollection()
 	{
 		collectionOfPick = new ArrayList<LotteryPick>();
@@ -24,11 +24,17 @@ public class LotteryCollection implements Serializable
 		
 	}
 	
-	//accessors - getters	
+	// Accessors - getters	
 	
 	public ArrayList<LotteryPick> getCollection()
 	{
 		return collectionOfPick;
+	}
+	
+	public String getTotalCost()
+	{
+		calculateCost();
+		return String.format("Cost: $ %.2f", this.totalCost);
 	}
 	
 	// mistake...don't use this
@@ -47,7 +53,9 @@ public class LotteryCollection implements Serializable
 		}
 		return totalCost;
 	}
-		
+	
+	// Do later - validate to make sure a collection is of type pick 1 only,
+	//	pick 3 only, or pick 4 only... not mix and match...
 	public void addToCollection(LotteryPick a)
 	{
 		collectionOfPick.add(a);
@@ -73,7 +81,7 @@ public class LotteryCollection implements Serializable
 	public String toString()
 	{
 		String temp = "";
-		//getting just the numbers of the lottery pick without the cost
+		// Getting just the numbers of the lottery pick without the cost
 		for(int i = 0; i < collectionOfPick.size(); i++)
 		{
 			temp += String.format("%s\n", getCollection().get(i).getNumbers());

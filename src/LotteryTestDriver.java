@@ -6,7 +6,9 @@ public class LotteryTestDriver
 	{
 		//test1();
 		//test2();
-		test3();
+		//test3();	//lotto pick 3 adding to database
+		//test4();	//lotto pick 4 adding to database and Printing txt file
+		checkWinnerTester();
 	}
 	
 	private static void test1()
@@ -86,7 +88,54 @@ public class LotteryTestDriver
 		LottoTicket lt = database.add(lc);
 		//Printer.print(lt); //lottoticket_id.txt 
 		//test winning ticket
-		System.out.println(database);;
-
+		System.out.println(database);
+	}
+	
+	private static void test4()
+	{
+		DataBase database = new DataBase();
+		
+		LottoPick4 a4 = new LottoPick4();
+		LottoPick4 b4 = new LottoPick4();
+		
+		try
+		{
+			a4.addSetOfNumbers(LottoRandom.randomNumbers(4));
+			b4.addSetOfNumbers(LottoRandom.randomNumbers(4));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Unable to add numbers");
+		}
+		
+		LotteryCollection lc = new LotteryCollection();
+		lc.addToCollection(a4);
+		lc.addToCollection(b4);
+		
+		LottoTicket lt = database.add(lc);
+		
+		//LottoTicket ticket = database.getLastEntry();
+		Printer.printTicket(lt);
+		System.out.println(database);
+	}
+	
+	private static void checkWinnerTester()
+	{
+		DataBase database = new DataBase();
+		LottoPick4 winningTester = new LottoPick4();
+		winningTester.addNumber(7);
+		winningTester.addNumber(6);
+		winningTester.addNumber(6);
+		winningTester.addNumber(1);
+		System.out.println("Winning Numbers are: " + winningTester.getNumbers());
+		System.out.println("Winning Ticket: \n" + database.checkWinner(winningTester));
+		
+		LottoPick3 nonWinnerTester = new LottoPick3();
+		nonWinnerTester.addNumber(0);
+		nonWinnerTester.addNumber(0);
+		nonWinnerTester.addNumber(0);
+		System.out.println("Winning Numbers are : " + nonWinnerTester.getNumbers());
+		System.out.println("Winning Ticket: \n" + database.checkWinner(nonWinnerTester));
+		
 	}
 }

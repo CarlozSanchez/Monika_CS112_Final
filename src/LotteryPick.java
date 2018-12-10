@@ -26,6 +26,7 @@ abstract public class LotteryPick implements Serializable
 	
 	//----------------setters ------- mutators
 	//no need for setters here
+	//will be using add method to add numbers
 	
 	//--------------getters -------- accessors
 	

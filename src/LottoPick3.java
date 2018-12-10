@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-//numbers 0-9 can be duplicated
-//in array list... it can be 000-999
-//each in array list is single digit... so 1, 1, 1 is allowed
+// Numbers 0-9 can be duplicated
+// in array list... it can be 000-999
+// each in array list is single digit... so 1, 1, 1 is allowed
 public class LottoPick3 extends LotteryPick
 {
 	private final int  MAX_NUMBER = 3;
@@ -15,11 +15,8 @@ public class LottoPick3 extends LotteryPick
 		getNameOfGame();
 		getCost();
 	}
-	
-	
-	//dont need full constructor
-	
-	//accessors
+		
+	// Accessors
 	public double getCost()
 	{
 		return this.COST;
@@ -35,7 +32,7 @@ public class LottoPick3 extends LotteryPick
 		return numbers;
 	}
 	
-	//methods
+	// Methods
 	@Override
 	public void addNumber(int num)
 	{
@@ -49,8 +46,8 @@ public class LottoPick3 extends LotteryPick
 		}	
 	}
 	
-	//copying arraylist to another arrayList
-	//example: using an arrayList of random Numbers and passing it here
+	// copying arraylist to another arrayList
+	// example: using an arrayList of random Numbers and passing it here
 	public boolean addSetOfNumbers(ArrayList<Integer> arr) throws Exception
 	{
 		if(arr.size() == MAX_NUMBER)
@@ -65,7 +62,15 @@ public class LottoPick3 extends LotteryPick
 		}
 	}
 	
-	//using the class LottoRandom, use method random numbers method
+	// Method to remove (all) number(s) in arrayList
+	// Array List will be empty again
+	public void clearSet()
+	{
+		numbers.clear();
+	}
+	
+	
+	// Using the class LottoRandom, use method random numbers method
 	// to generate single digit random (0-9)
 	public void generateNumbers()
 	{	

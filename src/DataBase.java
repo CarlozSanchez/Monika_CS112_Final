@@ -27,7 +27,7 @@ public class DataBase
 	// Opens the data base file to read in data
 	private void openFile()
 	{
-		try // to read in data base to Linked List
+		try // to read in data base to linkedList
 		{
 			inputStream = new ObjectInputStream(new FileInputStream(DATA_FILE));
 		}
@@ -52,7 +52,7 @@ public class DataBase
 		}
 	}
 
-	// Read the data from data file and loads it into Linked List
+	// Read the data from data file and loads it into linkedList
 	private void loadDataBase()
 	{
 		boolean endOfFile = false;
@@ -98,14 +98,30 @@ public class DataBase
 		else
 		{
 			int uniqueID = database.getLast().getID() + 1;
-
+			
 			entry.setID(uniqueID);
+			
 		}
-
+		entry.setNameOfGame(determineName(lc));
 		database.add(entry);
-		writeToDatabase(entry);
+		writeToDatabase(entry);	//append to binary file
 
 		return entry;
+	}
+	
+	private String determineName(LotteryCollection lt)
+	{
+		//LotteryPick pick = lt.getCollection().get(0);
+/*		if (pick.getClass().getName().equals("LottoPick1"))
+		{
+			return "Lotto Pick 1";
+		}
+		else if (pick.getClass().getName().equals("LottoPick3"))
+		{
+			return "Lotto Pick 3";
+		}*/
+	
+		return lt.getCollection().get(0).getClass().getName();
 	}
 
 	private void writeToDatabase(LottoTicket lt)
@@ -140,15 +156,15 @@ public class DataBase
 	public ArrayList<LottoTicket> checkWinner(LotteryPick winningNumbers)
 	{
 		ArrayList<LottoTicket> winners = null;
-
-		for (LotteryCollection lc : database)
+		winners = new ArrayList<LottoTicket>();
+		for (LottoTicket lt : database)
 		{
 			// <LotteryPick> lpArrayList = lt.getCollection();
-			for (LotteryPick lp : lc.getCollection())
+			for (LotteryPick lp : lt.getCollection())
 			{
 				if (lp.equals(winningNumbers))
 				{
-					winners.add((LottoTicket) lc);
+					winners.add(lt);
 				}
 			}
 		}
@@ -162,7 +178,7 @@ public class DataBase
 		String temp = "";
 		for(LottoTicket lt : database)
 		{
-			temp += String.format("ID: %-3d Date: %s\n", lt.getID(), lt.getDate());
+			temp += String.format("ID: %-3d %-20s Date: %s\n", lt.getID(), lt.getNameOfGame(), lt.getDate());
 			for(LotteryPick lp : lt.getCollection())
 			{
 				temp += "\t" + lp.getNumbers() + "\n";
