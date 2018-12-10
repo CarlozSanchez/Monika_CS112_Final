@@ -1,7 +1,5 @@
 
 
-
-
 public class LotteryTestDriver
 {
 	public static void main(String[] args)
@@ -86,8 +84,8 @@ public class LotteryTestDriver
 		lc.addToCollection(b3);
 		
 		LottoTicket lt = database.add(lc);
-
-		
+		//Printer.print(lt); //lottoticket_id.txt 
+		//test winning ticket
 		System.out.println(database);;
 
 	}
