@@ -15,7 +15,7 @@ public class LottoModel
 		this.tempLottoCollection = new LotteryCollection();
 		this.winningPicks = initializeWinningPicks();
 		this.currentMenu = "MainMenu"; 
-		number = 0;
+		number = -1;
 	}
 	
 	// Purpose: used for displaying in GUI 
@@ -117,7 +117,7 @@ public class LottoModel
 		temp += "C) Submit QuickPick\n\n";
 		return temp;
 	}
-	
+
 	
 	//------
 	
@@ -130,14 +130,16 @@ public class LottoModel
 	{
 		String result = "";
 		String temp = "";
+		String message = "";
 		//int num = 0;	//used for Pick_#_Menu
 		
 		if (selection.equals("Go Back"))
 		{
 			currentMenu = "MainMenu";
 			number = 0;
-			mainMenu();
+			temp = mainMenu();
 			tempLottoCollection = new LotteryCollection();
+			return temp;
 		}
 		
 		switch(currentMenu)
@@ -179,14 +181,16 @@ public class LottoModel
 			return temp;	
 		
 		case "PickNumberMenu":
+			//-----Pick 1 -> add random pick------random 1-99--------------
 			if (number == 1 && selection.equals("A"))
 			{	//add random pick option
 				LottoPick1 pick = new LottoPick1();
 				
 				try
 				{
-					pick.addSetOfNumbers(LottoRandom.randomNumberPickOne(1));
+					pick.addSetOfNumbers(LottoRandom.randomNumberPickOneAndNinetyNine(1));
 					tempLottoCollection.addToCollection(pick);
+					message = "Adding Quick Pick";
 				}
 				catch (Exception e)
 				{
@@ -194,30 +198,70 @@ public class LottoModel
 				}
 				
 			}			
-			else if (number == 1 && selection.equals("B"))
+			
+			//------Pick 3 -> Add random pick-----single digit random-----------------
+			else if (number == 3 && selection.equals("A"))
+			{	//add random pick option
+				LottoPick3 pick = new LottoPick3();
+				
+				try
+				{
+					pick.addSetOfNumbers(LottoRandom.randomNumbers(3));
+					tempLottoCollection.addToCollection(pick);
+					message = "Adding Quick Pick";
+				}
+				catch (Exception e)
+				{
+					System.out.println("Unable to add Numbers");
+				}
+				
+			}
+			
+			//-------Pick 4 -> Add random pick--------single digit random--------------
+			else if (number == 4 && selection.equals("A"))
+			{	//add random pick option
+				LottoPick4 pick = new LottoPick4();
+				
+				try
+				{
+					pick.addSetOfNumbers(LottoRandom.randomNumbers(4));
+					tempLottoCollection.addToCollection(pick);
+					message = "Adding Quick Pick";
+				}
+				catch (Exception e)
+				{
+					System.out.println("Unable to add Numbers");
+				}				
+			}
+			
+			//-------Clear ALL selection----------------------------
+			else if (selection.equals("B"))
 			{
 				//remove all added pick option
 				tempLottoCollection = new LotteryCollection();
+				message = "Clearing all added Picks";
 			}
-			
+			//--------Submit Quick Pick and Print----------------------
 			else if (selection.equals("C"))	//submit quick pick
 			{
+				
 				LottoTicket lt = database.add(tempLottoCollection);
 				Printer.printTicket(lt);
-				String message = "";
+				//String message = "";
 				message += "Printing ticket ID# " + lt.getID() + "\n";
 				message += lt.toString();
-				message += "\n\n\n \"Press GO BACK Button\" to go to MainMenu"; 
+				message += "\n\n\n \"Press GO BACK Button\"";
+				message += "\n  to go to MainMenu"; 
 				System.out.println("Debugger tester" + lt);
 				System.out.println("Price of LT: " + lt.getTotalCost());
 				return message;
+
 			}
 			temp = pickNumberMenu();
-			return temp;
+			return temp + "\n" + message;
 			
 		}
-		
-		
+			
 		return result;
 	}
 	

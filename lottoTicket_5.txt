@@ -1,0 +1,5 @@
+ID: 5  LottoPick3  Wed Dec 12 12:31:49 PST 2018
+[9, 33, 36]
+[33, 45, 25]
+[34, 18, 80]
+Total Cost: Cost: $ 3.00

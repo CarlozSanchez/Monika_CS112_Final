@@ -29,7 +29,7 @@ public class LottoRandom
 	}
 	
 	//random numbers from 1-99
-	public static ArrayList<Integer> randomNumberPickOne(int count)
+	public static ArrayList<Integer> randomNumberPickOneAndNinetyNine(int count)
 	{
 		ArrayList<Integer> arrNumbers = new ArrayList<Integer>(count);
 		
