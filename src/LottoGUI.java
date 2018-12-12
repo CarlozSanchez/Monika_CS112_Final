@@ -43,13 +43,15 @@ public class LottoGUI extends JFrame implements ActionListener
 	// Text Field of choices and results
 	private JTextArea outputTextArea;
 	
-
+	LottoModel model;
 	
 	
 	// Default constructor
 	public LottoGUI()
-	{
-		super("----Lotto System----");
+	{	
+		super("----Lotto System----");		
+		model = new LottoModel();	
+		
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(1,2));
