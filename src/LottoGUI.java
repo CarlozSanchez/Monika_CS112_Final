@@ -95,7 +95,8 @@ public class LottoGUI extends JFrame implements ActionListener
 		eastPanel.setLayout(new FlowLayout());
 		
 		// Output textField
-		outputTextArea = new JTextArea("---TextField---", 15, 15);
+		//outputTextArea = new JTextArea("---TextField---", 15, 15);
+		outputTextArea = new JTextArea(model.setUp());
 		outputTextArea.setEditable(false);
 		outputTextArea.setPreferredSize(new Dimension(200,400));
 		eastPanel.add(outputTextArea);
@@ -115,9 +116,13 @@ public class LottoGUI extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (e.getActionCommand().equals("A"))
+		String selection = model.process(e.getActionCommand());
+		outputTextArea.setText(selection);
+		
+/*		if (e.getActionCommand().equals("A"))
 		{
-			outputTextArea.setText("A button is selected");
+			//outputTextArea.setText("A button is selected");
+			selection = "A";
 		}
 		if (e.getActionCommand().equals("B"))
 		{
@@ -131,6 +136,8 @@ public class LottoGUI extends JFrame implements ActionListener
 		{
 			outputTextArea.setText("");
 		}
+		*/
+		
 		
 	}
 	
