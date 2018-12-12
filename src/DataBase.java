@@ -89,24 +89,29 @@ public class DataBase
 	// Adds a LotteryCollection to this database
 	public LottoTicket add(LotteryCollection lc)
 	{
-		LottoTicket entry = new LottoTicket(lc);
-
-		if (database.size() == 0)
+		
+		if (lc.getCollection().size() != 0)
 		{
-			entry.setID(0);
-		}
-		else
-		{
-			int uniqueID = database.getLast().getID() + 1;
-			
-			entry.setID(uniqueID);
-			
-		}
-		entry.setNameOfGame(determineName(lc));
-		database.add(entry);
-		writeToDatabase(entry);	//append to binary file
+			LottoTicket entry = new LottoTicket(lc);
 
-		return entry;
+			if (database.size() == 0)
+			{
+				entry.setID(0);
+			}
+			else
+			{
+				int uniqueID = database.getLast().getID() + 1;
+				
+				entry.setID(uniqueID);
+				
+			}
+			entry.setNameOfGame(determineName(lc));
+			database.add(entry);
+			writeToDatabase(entry);	//append to binary file
+			return entry;
+		}
+
+		return null;
 	}
 	
 	private String determineName(LotteryCollection lt)

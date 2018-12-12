@@ -14,6 +14,7 @@ public class LotteryTestDriver
 		LottoGUI gui = new LottoGUI();
 		gui.setVisible(true);
 		
+		
 	}
 	
 	private static void test1()

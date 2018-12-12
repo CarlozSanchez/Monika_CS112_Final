@@ -75,10 +75,10 @@ public class LottoModel
 	public String quickPickSelectionMenu()
 	{	//fill later------
 		String temp = "";
-		temp = "---quickpickmenuoption---\n";
-		temp += "A) Pick 1\n";
-		temp += "B) Pick 3\n";
-		temp += "C) Pick 4\n";
+		temp = "---QuickPickMenuOption---\n\n";
+		temp += "A) Pick 1\n\n";
+		temp += "B) Pick 3\n\n";
+		temp += "C) Pick 4\n\n";
 		return temp;
 	}
 	
@@ -98,18 +98,23 @@ public class LottoModel
 	
 	
 	//----QuickPickGameSelectionMenu----------------------
+	// Pick 1, Pick 3, Pick 4 options
 	public String lottoPickSelectionMenu()
-	{	//stub
+	{
 		String temp = "";
-		temp = "pick" + number + "game";
+		temp += "pick" + number + "game";
 		
 		return temp;
 	}
 	
-	public String pickMenu(int num)
+	//-----Pick_#_Menu-----------------------------
+	public String pickNumberMenu()
 	{
-		//stub
 		String temp = "";
+		temp += "---Pick"+number+"Menu---\n\n";
+		temp += "A) Add Random Pick\n\n";
+		temp += "B) Remove All added picks\n\n";
+		temp += "C) Submit QuickPick\n\n";
 		return temp;
 	}
 	
@@ -169,9 +174,47 @@ public class LottoModel
 				number = 4;		
 			}
 
-			temp = lottoPickSelectionMenu();
-			currentMenu = "Pick" + number + "Game";
+			temp = pickNumberMenu();
+			currentMenu = "PickNumberMenu";
 			return temp;	
+		
+		case "PickNumberMenu":
+			if (number == 1 && selection.equals("A"))
+			{	//add random pick option
+				LottoPick1 pick = new LottoPick1();
+				
+				try
+				{
+					pick.addSetOfNumbers(LottoRandom.randomNumberPickOne(1));
+					tempLottoCollection.addToCollection(pick);
+				}
+				catch (Exception e)
+				{
+					System.out.println("Unable to add Numbers");
+				}
+				
+			}			
+			else if (number == 1 && selection.equals("B"))
+			{
+				//remove all added pick option
+				tempLottoCollection = new LotteryCollection();
+			}
+			
+			else if (selection.equals("C"))	//submit quick pick
+			{
+				LottoTicket lt = database.add(tempLottoCollection);
+				Printer.printTicket(lt);
+				String message = "";
+				message += "Printing ticket ID# " + lt.getID() + "\n";
+				message += lt.toString();
+				message += "\n\n\n \"Press GO BACK Button\" to go to MainMenu"; 
+				System.out.println("Debugger tester" + lt);
+				System.out.println("Price of LT: " + lt.getTotalCost());
+				return message;
+			}
+			temp = pickNumberMenu();
+			return temp;
+			
 		}
 		
 		

@@ -29,6 +29,17 @@ public class LottoRandom
 	}
 	
 	//random numbers from 1-99
+	public static ArrayList<Integer> randomNumberPickOne(int count)
+	{
+		ArrayList<Integer> arrNumbers = new ArrayList<Integer>(count);
+		
+		for (int i = 0; i < count; i++)
+		{
+			arrNumbers.add(randomNumberOneThroughNinetyNine());
+		}
+		return arrNumbers;
+	}
+	
 	public static int randomNumberOneThroughNinetyNine()
 	{
 		Random r = new Random();
