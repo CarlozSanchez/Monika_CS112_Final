@@ -7,7 +7,7 @@ import javax.swing.JTextArea;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -28,6 +28,9 @@ public class LottoGUI extends JFrame implements ActionListener
 	public static final int HEIGHT = 600;
 	public static final int NUMBER_OF_CHARACTERS = 100;
 	
+	private Dimension BUTTON_SIZE = new Dimension(300,100);
+	private Font BUTTON_FONT = new Font("Ariel", Font.PLAIN, 40);
+	
 	private JPanel westPanel;
 	private JPanel eastPanel;
 	
@@ -40,7 +43,7 @@ public class LottoGUI extends JFrame implements ActionListener
 	// Text Field of choices and results
 	private JTextArea outputTextArea;
 	
-	private Dimension BUTTON_SIZE = new Dimension(300,100);
+
 	
 	
 	// Default constructor
@@ -64,12 +67,14 @@ public class LottoGUI extends JFrame implements ActionListener
 		//aButton.setSize(new Dimension(100,100));
 		//aButton.setBounds(100,100,100,100);
 		aButton.setPreferredSize(BUTTON_SIZE);
+		aButton.setFont(BUTTON_FONT);
 		westPanel.add(aButton);
 		aButton.addActionListener(this);
 		
 		// JButton bButton - westPanel
 		bButton = new JButton("B");
 		bButton.setPreferredSize(BUTTON_SIZE);
+		bButton.setFont(BUTTON_FONT);
 		
 		//bButton.setPreferredSize(new Dimension(100,100));
 		westPanel.add(bButton);
@@ -79,6 +84,7 @@ public class LottoGUI extends JFrame implements ActionListener
 		cButton = new JButton("C");
 		westPanel.add(cButton);
 		cButton.setPreferredSize(BUTTON_SIZE);
+		cButton.setFont(BUTTON_FONT);
 		cButton.addActionListener(this);
 		
 		//---------East Panel------------------------------------------
@@ -89,11 +95,13 @@ public class LottoGUI extends JFrame implements ActionListener
 		// Output textField
 		outputTextArea = new JTextArea("---TextField---", 15, 15);
 		outputTextArea.setEditable(false);
+		outputTextArea.setPreferredSize(new Dimension(200,400));
 		eastPanel.add(outputTextArea);
 		
 		// JButton goBackButton
 		goBackButton = new JButton("Go Back");
 		goBackButton.setPreferredSize(BUTTON_SIZE);
+		goBackButton.setFont(BUTTON_FONT);
 		eastPanel.add(goBackButton);
 		goBackButton.addActionListener(this);
 		
