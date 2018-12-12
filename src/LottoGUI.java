@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -39,6 +40,8 @@ public class LottoGUI extends JFrame implements ActionListener
 	// Text Field of choices and results
 	private JTextField outputTextField;
 	
+	private Dimension BUTTON_SIZE = new Dimension(300,100);
+	
 	
 	// Default constructor
 	public LottoGUI()
@@ -52,22 +55,30 @@ public class LottoGUI extends JFrame implements ActionListener
 		//---------West Panel---------------------------------------
 		westPanel = new JPanel();
 		westPanel.setBackground(Color.PINK);
-		westPanel.setLayout(new BoxLayout(westPanel, 3));
-		//westPanel.setLayout(new FlowLayout());
+		//westPanel.setLayout(new BoxLayout(westPanel, 3));
+		westPanel.setLayout(new FlowLayout());
 		
 		// JButton aButton - westPanel
 		aButton = new JButton("A");
+		//aButton.setMinimumSize(new Dimension(200,100));
+		//aButton.setSize(new Dimension(100,100));
+		//aButton.setBounds(100,100,100,100);
+		aButton.setPreferredSize(BUTTON_SIZE);
 		westPanel.add(aButton);
 		//aButton.addActionListener(new AactionButtonInnerClass());
 		
 		// JButton bButton - westPanel
 		bButton = new JButton("B");
+		bButton.setPreferredSize(BUTTON_SIZE);
+		
+		//bButton.setPreferredSize(new Dimension(100,100));
 		westPanel.add(bButton);
 		//bButton.addActionListener(new BactionButtonInnerClass());
 		
 		// JButton cButton - westPanel
 		cButton = new JButton("C");
 		westPanel.add(cButton);
+		cButton.setPreferredSize(BUTTON_SIZE);
 		//cButton.addActionListener(new CactionButtonInnerClass());
 		
 		//---------East Panel------------------------------------------
@@ -82,6 +93,7 @@ public class LottoGUI extends JFrame implements ActionListener
 		
 		// JButton goBackButton
 		goBackButton = new JButton("Go Back");
+		goBackButton.setPreferredSize(BUTTON_SIZE);
 		eastPanel.add(goBackButton);
 		
 		add(westPanel);
