@@ -2,7 +2,7 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -38,7 +38,7 @@ public class LottoGUI extends JFrame implements ActionListener
 	private JButton goBackButton;
 	
 	// Text Field of choices and results
-	private JTextField outputTextField;
+	private JTextArea outputTextArea;
 	
 	private Dimension BUTTON_SIZE = new Dimension(300,100);
 	
@@ -65,7 +65,7 @@ public class LottoGUI extends JFrame implements ActionListener
 		//aButton.setBounds(100,100,100,100);
 		aButton.setPreferredSize(BUTTON_SIZE);
 		westPanel.add(aButton);
-		//aButton.addActionListener(new AactionButtonInnerClass());
+		aButton.addActionListener(this);
 		
 		// JButton bButton - westPanel
 		bButton = new JButton("B");
@@ -73,13 +73,13 @@ public class LottoGUI extends JFrame implements ActionListener
 		
 		//bButton.setPreferredSize(new Dimension(100,100));
 		westPanel.add(bButton);
-		//bButton.addActionListener(new BactionButtonInnerClass());
+		bButton.addActionListener(this);
 		
 		// JButton cButton - westPanel
 		cButton = new JButton("C");
 		westPanel.add(cButton);
 		cButton.setPreferredSize(BUTTON_SIZE);
-		//cButton.addActionListener(new CactionButtonInnerClass());
+		cButton.addActionListener(this);
 		
 		//---------East Panel------------------------------------------
 		eastPanel = new JPanel();
@@ -87,23 +87,40 @@ public class LottoGUI extends JFrame implements ActionListener
 		eastPanel.setLayout(new FlowLayout());
 		
 		// Output textField
-		outputTextField = new JTextField(NUMBER_OF_CHARACTERS);
-		outputTextField.setEditable(false);
-		eastPanel.add(outputTextField);
+		outputTextArea = new JTextArea("---TextField---", 15, 15);
+		outputTextArea.setEditable(false);
+		eastPanel.add(outputTextArea);
 		
 		// JButton goBackButton
 		goBackButton = new JButton("Go Back");
 		goBackButton.setPreferredSize(BUTTON_SIZE);
 		eastPanel.add(goBackButton);
+		goBackButton.addActionListener(this);
 		
 		add(westPanel);
 		add(eastPanel);
 	}
 	
+	
 	@Override
-	public void actionPerformed(ActionEvent arg0)
+	public void actionPerformed(ActionEvent e)
 	{
-		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("A"))
+		{
+			outputTextArea.setText("A button is selected");
+		}
+		if (e.getActionCommand().equals("B"))
+		{
+			outputTextArea.setText("B button is selected");
+		}
+		if (e.getActionCommand().equals("C"))
+		{
+			outputTextArea.setText("C button is selected");
+		}
+		if (e.getActionCommand().equals("Go Back"))
+		{
+			outputTextArea.setText("");
+		}
 		
 	}
 	
