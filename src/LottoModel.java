@@ -75,7 +75,10 @@ public class LottoModel
 	public String quickPickSelectionMenu()
 	{	//fill later------
 		String temp = "";
-		temp = "quickpickmenuoption";
+		temp = "---quickpickmenuoption---\n";
+		temp += "A) Pick 1\n";
+		temp += "B) Pick 3\n";
+		temp += "C) Pick 4\n";
 		return temp;
 	}
 	
@@ -95,10 +98,10 @@ public class LottoModel
 	
 	
 	//----QuickPickGameSelectionMenu----------------------
-	public String lottoPickSelectionMenu(int num)
+	public String lottoPickSelectionMenu()
 	{	//stub
 		String temp = "";
-		temp = "pick" + num + "game";
+		temp = "pick" + number + "game";
 		
 		return temp;
 	}
@@ -156,27 +159,19 @@ public class LottoModel
 			if (selection.equals("A"))
 			{
 				number = 1;
-				temp = lottoPickSelectionMenu(number);
-				currentMenu = "Pick" + number + "Game";
-				return temp;
 			}
 			else if (selection.equals("B"))
 			{
 				number = 3;
-				temp = lottoPickSelectionMenu(number);
-				currentMenu = "Pick" + number + "Game";
-				return temp;
 			}
 			else if (selection.equals("C"))
 			{
-				number = 4;
-				temp = lottoPickSelectionMenu(number);
-				currentMenu = "Pick" + number + "Game";
-				return temp;
+				number = 4;		
 			}
-			break;
-		
-		
+
+			temp = lottoPickSelectionMenu();
+			currentMenu = "Pick" + number + "Game";
+			return temp;	
 		}
 		
 		
