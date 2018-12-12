@@ -8,7 +8,12 @@ public class LotteryTestDriver
 		//test2();
 		//test3();	//lotto pick 3 adding to database
 		//test4();	//lotto pick 4 adding to database and Printing txt file
-		checkWinnerTester();
+		//checkWinnerTester();
+		
+		//Testing LottoGUI
+		LottoGUI gui = new LottoGUI();
+		gui.setVisible(true);
+		
 	}
 	
 	private static void test1()
