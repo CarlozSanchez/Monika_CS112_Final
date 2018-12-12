@@ -8,14 +8,12 @@ public class LotteryCollection implements Serializable
 {
 	private ArrayList <LotteryPick> collectionOfPick;
 	//private ArrayList <T> collectionOfPick;
-	private double totalCost;
 	
 	// Default constructor
 	public LotteryCollection()
 	{
 		collectionOfPick = new ArrayList<LotteryPick>();
 		//collectionOfPick = new ArrayList<T>();
-		totalCost = 0.00;
 	}
 	
 	public LotteryCollection(LotteryCollection col)
@@ -34,7 +32,7 @@ public class LotteryCollection implements Serializable
 	public String getTotalCost()
 	{
 		calculateCost();
-		return String.format("Cost: $ %.2f", this.totalCost);
+		return String.format("Cost: $ %.2f", this.calculateCost());
 	}
 	
 	// mistake...don't use this
@@ -47,6 +45,7 @@ public class LotteryCollection implements Serializable
 	
 	public double calculateCost()
 	{
+		float totalCost = 0;
 		for (int i = 0; i < collectionOfPick.size(); i++)
 		{
 			totalCost += collectionOfPick.get(i).getCost();

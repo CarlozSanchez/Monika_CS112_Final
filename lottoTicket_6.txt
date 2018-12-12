@@ -1,4 +1,0 @@
-ID: 6  LottoPick4  Wed Dec 12 01:32:34 PST 2018
-[0, 4, 7, 4]
-[0, 1, 5, 4]
-Total Cost: Cost: $ 2.00
