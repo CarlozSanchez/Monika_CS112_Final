@@ -1,0 +1,5 @@
+ID: 59  LottoPick3  Thu Dec 13 04:11:12 PST 2018
+[7, 2, 0]
+[0, 1, 4]
+[6, 9, 6]
+Total Cost: Cost: $ 3.00

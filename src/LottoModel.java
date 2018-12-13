@@ -1,3 +1,17 @@
+////////////////////////////////////////////////////////////////////////////
+//	Course: 			CS112	Tues/Thurs 1:30pm-3:20pm
+//	Chapter:			Final Project
+//	HomeWork:			Final Project - Simple Lottery System
+//	Programmer:			Monika Shin
+//	Date Modified:		12-13-18	
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+//	Program Title:		 LottoModel
+//	Program Description: will perform the button actions from LottoGUI class
+//						 and output text of results for user
+////////////////////////////////////////////////////////////////////////////
+
 import java.util.ArrayList;
 
 // This class will be used for LottoGUI
@@ -10,6 +24,7 @@ public class LottoModel
 	private String currentMenu;	//String of which menu you are at
 	private int number;
 	
+	//default constructor
 	public LottoModel()
 	{
 		this.database = new DataBase();
@@ -20,7 +35,7 @@ public class LottoModel
 	}
 	
 	// Purpose: used for displaying in GUI 
-	// Pre-setting winning numbers for demo
+	// Pre-setting winning numbers for demo purpose
 	private LotteryPick[] initializeWinningPicks()
 	{
 		LotteryPick[] arr = new LotteryPick[3];
@@ -154,9 +169,7 @@ public class LottoModel
 		return temp;
 	}
 
-	
-	//------
-	
+	//not used---delete later
 	public String setUp()
 	{
 		return mainMenu();
@@ -313,9 +326,6 @@ public class LottoModel
 			temp = pickNumberMenu();
 			return temp + "\n" + message;	
 		
-		//----MainMenu -> checkWinnersMenu---------
-		case "checkWinnersMenu":
-
 		}
 			
 		return result;

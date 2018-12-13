@@ -9,7 +9,7 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Program Title:		 LottoGUI
 //	Program Description: Creates panels, buttons, textArea, etc.
-//						 
+//						 Will pass info to class LottoModel to do all the work
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -68,8 +68,8 @@ public class LottoGUI extends JFrame implements ActionListener
 	{	
 		super();		
 		model = new LottoModel();
-		super.setTitle("----Lotto System----" + model.getWinningPicks());
-		
+		//super.setTitle("----Lotto System----" + model.getWinningPicks());
+		super.setTitle("----Simple Lotto System----");
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(1,2));
