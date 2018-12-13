@@ -133,7 +133,8 @@ public class LottoModel
 		String message = "";
 		//int num = 0;	//used for Pick_#_Menu
 		
-		if (selection.equals("Go Back"))
+		//if (selection.equals("Go Back"))
+		if(selection.equals("HOME"))
 		{
 			currentMenu = "MainMenu";
 			number = 0;
@@ -253,7 +254,8 @@ public class LottoModel
 				//String message = "";
 				message += "Printing ticket ID# " + lt.getID() + "\n";
 				message += lt.toString();
-				message += "\n\n\n \"Press GO BACK Button\"";
+				//message += "\n\n\n \"Press GO BACK Button\"";
+				message += "\n\n\n \"Press HOME Button\"";
 				message += "\n  to go to MainMenu"; 
 				System.out.println("Debugger tester" + lt);
 				System.out.println("Price of LT: " + lt.getTotalCost());

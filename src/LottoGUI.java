@@ -102,7 +102,7 @@ public class LottoGUI extends JFrame implements ActionListener
 		eastPanel.add(outputTextArea);
 		
 		// JButton goBackButton
-		goBackButton = new JButton("Go Back");
+		goBackButton = new JButton("HOME");
 		goBackButton.setPreferredSize(BUTTON_SIZE);
 		goBackButton.setFont(BUTTON_FONT);
 		eastPanel.add(goBackButton);
