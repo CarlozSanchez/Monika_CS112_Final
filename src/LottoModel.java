@@ -190,7 +190,8 @@ public class LottoModel
 				{
 					pick.addSetOfNumbers(LottoRandom.randomNumberPickOneAndNinetyNine(1));
 					tempLottoCollection.addToCollection(pick);
-					message = "Adding Quick Pick";
+					//message = "Adding Quick Pick";
+					message = tempLottoCollection.toString();
 				}
 				catch (Exception e)
 				{
@@ -208,7 +209,8 @@ public class LottoModel
 				{
 					pick.addSetOfNumbers(LottoRandom.randomNumbers(3));
 					tempLottoCollection.addToCollection(pick);
-					message = "Adding Quick Pick";
+					//message = "Adding Quick Pick";
+					message = tempLottoCollection.toString();
 				}
 				catch (Exception e)
 				{
@@ -226,7 +228,8 @@ public class LottoModel
 				{
 					pick.addSetOfNumbers(LottoRandom.randomNumbers(4));
 					tempLottoCollection.addToCollection(pick);
-					message = "Adding Quick Pick";
+					//message = "Adding Quick Pick";
+					message = tempLottoCollection.toString();
 				}
 				catch (Exception e)
 				{
@@ -255,7 +258,6 @@ public class LottoModel
 				System.out.println("Debugger tester" + lt);
 				System.out.println("Price of LT: " + lt.getTotalCost());
 				return message;
-
 			}
 			temp = pickNumberMenu();
 			return temp + "\n" + message;

@@ -44,7 +44,7 @@ public class LottoGUI extends JFrame implements ActionListener
 	private JTextArea outputTextArea;
 	
 	LottoModel model;
-	
+	Dimension textSize = new Dimension(300, 400);
 	
 	// Default constructor
 	public LottoGUI()
@@ -97,8 +97,8 @@ public class LottoGUI extends JFrame implements ActionListener
 		// Output textField
 		//outputTextArea = new JTextArea("---TextField---", 15, 15);
 		outputTextArea = new JTextArea(model.setUp());
-		outputTextArea.setEditable(false);
-		outputTextArea.setPreferredSize(new Dimension(200,400));
+		outputTextArea.setEditable(false);		
+		outputTextArea.setPreferredSize(textSize);		
 		eastPanel.add(outputTextArea);
 		
 		// JButton goBackButton
