@@ -1,6 +1,20 @@
+////////////////////////////////////////////////////////////////////////////
+//	Course: 			CS112	Tues/Thurs 1:30pm-3:20pm
+//	Chapter:			Final Project
+//	HomeWork:			Final Project - Simple Lottery System
+//	Programmer:			Monika Shin
+//	Date Modified:		12-13-18	
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+//	Program Title:		 LottoPick1
+//	Program Description: Holds max of 1 number in arrayList... numbers stored
+//						 are double digits... 1-99
+////////////////////////////////////////////////////////////////////////////
+
 import java.util.ArrayList;
 // Singular pick number
-// 1-99
+
 public class LottoPick1 extends LotteryPick
 {
 	private final int  MAX_NUMBER = 1;
@@ -66,7 +80,7 @@ public class LottoPick1 extends LotteryPick
 	// to generate single digit random (0-9)
 	public void generateNumbers()
 	{	
-		numbers = LottoRandom.randomNumbers(MAX_NUMBER);
+		numbers = LottoRandom.randomNumberPickOneAndNinetyNine(MAX_NUMBER);
 	}
 
 	public boolean equals(Object other)
