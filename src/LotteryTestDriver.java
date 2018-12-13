@@ -1,4 +1,20 @@
+////////////////////////////////////////////////////////////////////////////
+//	Course: 			CS112	Tues/Thurs 1:30pm-3:20pm
+//	Chapter:			Final Project
+//	HomeWork:			Final Project - Simple Lottery System
+//	Programmer:			Monika Shin
+//	Date Modified:		12-13-18	
+////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////
+//	Program Title:		 LotteryTestDriver
+//	Program Description: main driver to test classes and run program
+//						 
+////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
+//	Actual Program	   //
+/////////////////////////
 
 public class LotteryTestDriver
 {
@@ -17,6 +33,7 @@ public class LotteryTestDriver
 		
 	}
 	
+	//testing LottoRandom methods and adding to collection
 	private static void test1()
 	{
 		//LotteryPick a = new LotteryPick();
@@ -55,6 +72,8 @@ public class LotteryTestDriver
 		System.out.println(col01);	
 	}
 	
+	//creating database and testing to see if lottery collection gets added
+	//properly
 	private static void test2()
 	{
 		DataBase database = new DataBase();
@@ -69,6 +88,7 @@ public class LotteryTestDriver
 		System.out.println(database);
 	}
 	
+	//creating lotto pick 3 random numbers and adding to database
 	private static void test3()
 	{
 		DataBase database = new DataBase();
@@ -97,6 +117,7 @@ public class LotteryTestDriver
 		System.out.println(database);
 	}
 	
+	//lotto pick 4 adding to database and Printing txt file
 	private static void test4()
 	{
 		DataBase database = new DataBase();
@@ -125,6 +146,7 @@ public class LotteryTestDriver
 		System.out.println(database);
 	}
 	
+	//testing database check winner method
 	private static void checkWinnerTester()
 	{
 		DataBase database = new DataBase();

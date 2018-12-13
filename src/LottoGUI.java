@@ -1,3 +1,17 @@
+////////////////////////////////////////////////////////////////////////////
+//	Course: 			CS112	Tues/Thurs 1:30pm-3:20pm
+//	Chapter:			Final Project
+//	HomeWork:			Final Project - Simple Lottery System
+//	Programmer:			Monika Shin
+//	Date Modified:		12-13-18	
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+//	Program Title:		 LottoGUI
+//	Program Description: Creates panels, buttons, textArea, etc.
+//						 
+////////////////////////////////////////////////////////////////////////////
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,15 +56,13 @@ public class LottoGUI extends JFrame implements ActionListener
 	private JButton aButton;
 	private JButton bButton;
 	private JButton cButton;
-	private JButton goBackButton;
+	private JButton goBackButton; //HOME button
 	
 	// Text Field of choices and results
 	private JTextArea outputTextArea;
+		
+	LottoModel model;	//most of the heavy duty work will be done in this class
 	
-
-
-	
-	LottoModel model;
 	// Default constructor
 	public LottoGUI()
 	{	
@@ -142,27 +154,7 @@ public class LottoGUI extends JFrame implements ActionListener
 	{
 		String selection = model.process(e.getActionCommand());
 		outputTextArea.setText(selection);
-		
-/*		if (e.getActionCommand().equals("A"))
-		{
-			//outputTextArea.setText("A button is selected");
-			selection = "A";
-		}
-		if (e.getActionCommand().equals("B"))
-		{
-			outputTextArea.setText("B button is selected");
-		}
-		if (e.getActionCommand().equals("C"))
-		{
-			outputTextArea.setText("C button is selected");
-		}
-		if (e.getActionCommand().equals("Go Back"))
-		{
-			outputTextArea.setText("");
-		}
-		*/
-		
-		
+					
 	}
 	
 }

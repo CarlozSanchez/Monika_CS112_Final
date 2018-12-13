@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 // This class will be used for LottoGUI
 
@@ -25,7 +26,7 @@ public class LottoModel
 		LotteryPick[] arr = new LotteryPick[3];
 		//lotteryPick[0] = pick1 winning numbers
 		LottoPick1 pick1Winner = new LottoPick1();
-		pick1Winner.addNumber(50);
+		pick1Winner.addNumber(66);
 		arr[0] = pick1Winner;	//setting to index 0
 		
 		//lotteryPick[1] = pick3 winning numbers
@@ -38,9 +39,9 @@ public class LottoModel
 		//lotteryPick[2] = pick4 winning numbers	
 		LottoPick4 pick4Winner = new LottoPick4();
 		pick4Winner.addNumber(7);
-		pick4Winner.addNumber(6);
-		pick4Winner.addNumber(6);
-		pick4Winner.addNumber(1);
+		pick4Winner.addNumber(3);
+		pick4Winner.addNumber(0);
+		pick4Winner.addNumber(8);
 		arr[2] = pick4Winner;
 		
 		return arr;
@@ -49,8 +50,8 @@ public class LottoModel
 
 	public String getWinningPicks()
 	{
-		String temp = "   ";
-		temp +=String.format("Pick 1 Winners: %s%-5s\n", winningPicks[0].getNumbers(),"");
+		String temp = "\n";
+		temp += String.format("Pick 1 Winners: %s%-5s\n", winningPicks[0].getNumbers(),"");
 		temp += String.format("Pick 3 Winners: %s%-5s\n", winningPicks[1].getNumbers(),"");
 		temp += String.format("Pick 4 Winners: %s%-5s\n", winningPicks[2].getNumbers(),"");
 		
@@ -84,14 +85,50 @@ public class LottoModel
 	public String checkWinnersSelectionMenu()
 	{	//fill later------
 		String temp = "";
-		temp = "checkwinnersleectionmenu";
+		temp += "---Check Winners---\n";
+		temp += getWinningPicks();
+		
+		//currentPick will be used to state which LottoGame Pick #
+		for (int i = 0; i < winningPicks.length; i++)
+		{
+			String currentPick = "";
+			
+			if (i == 0)
+			{
+				currentPick = i + 1 + "";
+			}
+			else
+			{
+				currentPick = i + 2 + "";
+			}			
+			
+			ArrayList<LottoTicket> tempList = database.checkWinner(winningPicks[i]);
+			
+			if (tempList.size() != 0)
+			{			
+				temp += "\n\nLottoPick " + currentPick + " Winners:\n";
+				for(LottoTicket lt : tempList)
+				{
+					temp += "Ticket# " +  lt.getID() + "  " + lt.getDate() + "\n";
+				}
+			}
+			else
+			{
+				temp += "\nNo winners for Lotto Pick " + currentPick;
+			}
+		}
+		temp += "\n\n\n \"Press HOME Button\"";
+		temp += "\n  to go to MainMenu"; 
 		return temp;
 	}
 	
 	public String databaseSelectionMenu()
-	{	//stub
+	{
 		String temp = "";
-		temp = "databaseSelectionmenu";
+		temp = "---Database Menu---";
+		temp += database.toString();
+		temp += "\n\n\n \"Press HOME Button\"";
+		temp += "\n  to go to MainMenu"; 
 		return temp;
 	}
 	
@@ -130,7 +167,6 @@ public class LottoModel
 		String result = "";
 		String temp = "";
 		String message = "";
-		//int num = 0;	//used for Pick_#_Menu
 		
 		//if (selection.equals("Go Back"))
 		if(selection.equals("HOME"))
@@ -153,14 +189,18 @@ public class LottoModel
 			}
 			else if (selection.equals("B"))
 			{
-				return checkWinnersSelectionMenu();
+				temp = checkWinnersSelectionMenu();
+				currentMenu = "CheckWinnersMenu";			
+				return temp;
 			}
 			else if (selection.equals("C"))
 			{
-				return databaseSelectionMenu();
+				temp = databaseSelectionMenu();
+				currentMenu = "DataBase";
+				return temp;
 			}
 			break;
-			
+		//---MainMenu -> QuickPickGameSelectionMenu ->Pick#	
 		case "QuickPickGameSelectionMenu":
 						
 			if (selection.equals("A"))
@@ -181,9 +221,10 @@ public class LottoModel
 			return temp;	
 		
 		case "PickNumberMenu":
-			//-----Pick 1 -> add random pick------random 1-99--------------
+			//-MainMenu -> QuickPickGameSelectionMenu -> Pick 1 -> add random pick--
+			//---random pick 1-99
 			if (number == 1 && selection.equals("A"))
-			{	//add random pick option
+			{
 				LottoPick1 pick = new LottoPick1();
 				
 				try
@@ -200,9 +241,9 @@ public class LottoModel
 				
 			}			
 			
-			//------Pick 3 -> Add random pick-----single digit random-----------------
+			//------Pick 3 -> Add random pick-----single digit random 0-9
 			else if (number == 3 && selection.equals("A"))
-			{	//add random pick option
+			{	
 				LottoPick3 pick = new LottoPick3();
 				
 				try
@@ -219,7 +260,7 @@ public class LottoModel
 				
 			}
 			
-			//-------Pick 4 -> Add random pick--------single digit random--------------
+			//-------Pick 4 -> Add random pick------single digit random 0-9
 			else if (number == 4 && selection.equals("A"))
 			{	//add random pick option
 				LottoPick4 pick = new LottoPick4();
@@ -246,14 +287,14 @@ public class LottoModel
 				message = "Quick Picks cleared";
 			}
 			//--------Submit Quick Pick and Print----------------------
-			else if (selection.equals("C"))	//submit quick pick
+			else if (selection.equals("C"))
 			{
 				
 				if(tempLottoCollection.getCollection().size() != 0)
 				{
 					LottoTicket lt = database.add(tempLottoCollection);
 					Printer.printTicket(lt);
-					//String message = "";
+		
 					message += "Printing ticket ID# " + lt.getID() + "\n";
 					message += lt.toString();
 					//message += "\n\n\n \"Press GO BACK Button\"";
@@ -270,12 +311,14 @@ public class LottoModel
 
 			}
 			temp = pickNumberMenu();
-			return temp + "\n" + message;		
+			return temp + "\n" + message;	
+		
+		//----MainMenu -> checkWinnersMenu---------
+		case "checkWinnersMenu":
+
 		}
 			
 		return result;
 	}
-	
-	
-	
+		
 }

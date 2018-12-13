@@ -1,9 +1,22 @@
+////////////////////////////////////////////////////////////////////////////
+//	Course: 			CS112	Tues/Thurs 1:30pm-3:20pm
+//	Chapter:			Final Project
+//	HomeWork:			Final Project - Simple Lottery System
+//	Programmer:			Monika Shin
+//	Date Modified:		12-13-18	
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+//	Program Title:		 LotteryCollection
+//	Program Description: implements serializable...will be used in DataBase class
+//						 to create binary file
+////////////////////////////////////////////////////////////////////////////
+
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-// each game type will be seperated into different tickets
-// 
 public class LotteryCollection implements Serializable
 {
 	private ArrayList <LotteryPick> collectionOfPick;
