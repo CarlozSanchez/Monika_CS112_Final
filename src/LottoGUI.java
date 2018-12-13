@@ -2,6 +2,7 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.GridLayout;
@@ -31,7 +32,7 @@ public class LottoGUI extends JFrame implements ActionListener
 	private Dimension BUTTON_SIZE = new Dimension(300,100);
 	private Font BUTTON_FONT = new Font("Ariel", Font.PLAIN, 40);
 	
-	private Dimension TEXT_AREA_SIZE = new Dimension(300, 600);
+	private Dimension TEXT_AREA_SIZE = new Dimension(300, 550);
 	private Font TEXT_AREA_FONT = new Font("Ariel", Font.PLAIN, 18);
 	
 	private JPanel westPanel;
@@ -108,15 +109,28 @@ public class LottoGUI extends JFrame implements ActionListener
 		eastPanel.setBackground(Color.WHITE);
 		eastPanel.setLayout(new FlowLayout());
 		
+
+		
 		// Output textField
 		//outputTextArea = new JTextArea("---TextField---", 15, 15);
 		outputTextArea = new JTextArea(model.setUp());
 		outputTextArea.setEditable(false);		
-		outputTextArea.setPreferredSize(TEXT_AREA_SIZE);		
+		//.setPreferredSize(TEXT_AREA_SIZE);	
+		//outputTextArea.setPreferredSize(new Dimension(300, 800));
+		//outputTextArea.setMinimumSize(new Dimension(300, 800));
 		outputTextArea.setFont(TEXT_AREA_FONT);
-		eastPanel.add(outputTextArea);
+		//scrollPane.add(outputTextArea);
 		
-
+		JScrollPane scrollPane = new JScrollPane(outputTextArea);
+		scrollPane.setPreferredSize(TEXT_AREA_SIZE);
+		
+		/*
+		JScrollPane scrollPane = new JScrollPane(outputTextArea, 
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		*/
+		
+		eastPanel.add(scrollPane);
 		
 		add(westPanel);
 		add(eastPanel);
