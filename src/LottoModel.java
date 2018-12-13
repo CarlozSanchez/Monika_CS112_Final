@@ -49,11 +49,10 @@ public class LottoModel
 
 	public String getWinningPicks()
 	{
-		String temp;
-		
-		temp = String.format("Pick 1 Winners: %s\n", winningPicks[0].getNumbers());
-		temp = String.format("Pick 3 Winners: %s\n", winningPicks[1].getNumbers());
-		temp = String.format("Pick 4 Winners: %s\n", winningPicks[2].getNumbers());
+		String temp = "   ";
+		temp +=String.format("Pick 1 Winners: %s%-5s\n", winningPicks[0].getNumbers(),"");
+		temp += String.format("Pick 3 Winners: %s%-5s\n", winningPicks[1].getNumbers(),"");
+		temp += String.format("Pick 4 Winners: %s%-5s\n", winningPicks[2].getNumbers(),"");
 		
 		return temp;
 	}
@@ -243,27 +242,35 @@ public class LottoModel
 			{
 				//remove all added pick option
 				tempLottoCollection = new LotteryCollection();
-				message = "Clearing all added Picks";
+				//message = "Clearing all added Picks";
+				message = "Quick Picks cleared";
 			}
 			//--------Submit Quick Pick and Print----------------------
 			else if (selection.equals("C"))	//submit quick pick
 			{
 				
-				LottoTicket lt = database.add(tempLottoCollection);
-				Printer.printTicket(lt);
-				//String message = "";
-				message += "Printing ticket ID# " + lt.getID() + "\n";
-				message += lt.toString();
-				//message += "\n\n\n \"Press GO BACK Button\"";
-				message += "\n\n\n \"Press HOME Button\"";
-				message += "\n  to go to MainMenu"; 
-				System.out.println("Debugger tester" + lt);
-				System.out.println("Price of LT: " + lt.getTotalCost());
-				return message;
+				if(tempLottoCollection.getCollection().size() != 0)
+				{
+					LottoTicket lt = database.add(tempLottoCollection);
+					Printer.printTicket(lt);
+					//String message = "";
+					message += "Printing ticket ID# " + lt.getID() + "\n";
+					message += lt.toString();
+					//message += "\n\n\n \"Press GO BACK Button\"";
+					message += "\n\n\n \"Press HOME Button\"";
+					message += "\n  to go to MainMenu"; 
+					System.out.println("Debugger tester" + lt);
+					System.out.println("Price of LT: " + lt.getTotalCost());
+					return message;
+				}
+				else
+				{
+					message += "Add Quick Picks before submitting!";
+				}
+
 			}
 			temp = pickNumberMenu();
-			return temp + "\n" + message;
-			
+			return temp + "\n" + message;		
 		}
 			
 		return result;

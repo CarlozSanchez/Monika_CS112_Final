@@ -24,12 +24,15 @@ import javax.swing.JCheckBox;
 
 public class LottoGUI extends JFrame implements ActionListener
 {
-	public static final int WIDTH = 700;
+	public static final int WIDTH = 710;
 	public static final int HEIGHT = 600;
 	public static final int NUMBER_OF_CHARACTERS = 100;
 	
 	private Dimension BUTTON_SIZE = new Dimension(300,100);
 	private Font BUTTON_FONT = new Font("Ariel", Font.PLAIN, 40);
+	
+	private Dimension TEXT_AREA_SIZE = new Dimension(300, 600);
+	private Font TEXT_AREA_FONT = new Font("Ariel", Font.PLAIN, 18);
 	
 	private JPanel westPanel;
 	private JPanel eastPanel;
@@ -43,14 +46,16 @@ public class LottoGUI extends JFrame implements ActionListener
 	// Text Field of choices and results
 	private JTextArea outputTextArea;
 	
-	LottoModel model;
-	Dimension textSize = new Dimension(300, 400);
+
+
 	
+	LottoModel model;
 	// Default constructor
 	public LottoGUI()
 	{	
-		super("----Lotto System----");		
-		model = new LottoModel();	
+		super();		
+		model = new LottoModel();
+		super.setTitle("----Lotto System----" + model.getWinningPicks());
 		
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,6 +94,15 @@ public class LottoGUI extends JFrame implements ActionListener
 		cButton.setFont(BUTTON_FONT);
 		cButton.addActionListener(this);
 		
+		// JButton goBackButton
+		goBackButton = new JButton("HOME");
+		goBackButton.setPreferredSize(BUTTON_SIZE);
+		goBackButton.setFont(BUTTON_FONT);
+		westPanel.add(goBackButton);
+		goBackButton.addActionListener(this);
+		
+		
+		
 		//---------East Panel------------------------------------------
 		eastPanel = new JPanel();
 		eastPanel.setBackground(Color.WHITE);
@@ -98,15 +112,11 @@ public class LottoGUI extends JFrame implements ActionListener
 		//outputTextArea = new JTextArea("---TextField---", 15, 15);
 		outputTextArea = new JTextArea(model.setUp());
 		outputTextArea.setEditable(false);		
-		outputTextArea.setPreferredSize(textSize);		
+		outputTextArea.setPreferredSize(TEXT_AREA_SIZE);		
+		outputTextArea.setFont(TEXT_AREA_FONT);
 		eastPanel.add(outputTextArea);
 		
-		// JButton goBackButton
-		goBackButton = new JButton("HOME");
-		goBackButton.setPreferredSize(BUTTON_SIZE);
-		goBackButton.setFont(BUTTON_FONT);
-		eastPanel.add(goBackButton);
-		goBackButton.addActionListener(this);
+
 		
 		add(westPanel);
 		add(eastPanel);
